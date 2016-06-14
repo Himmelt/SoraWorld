@@ -1,10 +1,11 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
+import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.3
 import QtGraphicalEffects 1.0
 
+
 Item{
-    id: item1
 
     Item{
         id: background
@@ -91,7 +92,7 @@ Item{
         }
 
         Item{
-            id: close
+            id: closex
             width: 4*height
             anchors.top: parent.top
             anchors.topMargin: 5
@@ -99,6 +100,28 @@ Item{
             anchors.bottomMargin: 5
             anchors.right: parent.right
             anchors.rightMargin: 5
+
+            Xutton {
+                id: xxx
+                name: "xxx"
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: parent.right
+                anchors.rightMargin: 0
+            }
+            Xutton {
+                id: max
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: xxx.left
+                anchors.rightMargin: 5
+                name: "max"
+            }
+            Xutton {
+                id: min
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: max.left
+                anchors.rightMargin: 5
+                name: "min"
+            }
         }
     }
 
@@ -116,54 +139,15 @@ Item{
         currentIndex: tabBar.currentIndex
 
         MainPage {
-            Label{
-                text:"1"
-            }
+            id: mainPage
         }
 
         ConfigPage {
-            Label{
-                text:"2"
-            }
+            id: config
         }
 
-        Rectangle {
-            id: rect
-            width: 100; height: 100
-            color: "red"
-
-            MouseArea {
-                id: mouseArea
-                anchors.fill: parent
-            }
-
-            states: State {
-                name: "moved"; when: mouseArea.pressed
-                PropertyChanges { target: rect; x: 50; y: 50 }
-            }
-
-            transitions: [
-                Transition {
-                    from: "stop"; to: "go"
-                    PropertyAnimation { target: stopLight
-                        properties: "color"; duration: 1000 }
-                },
-                Transition {
-                    from: "go"; to: "stop"
-                    PropertyAnimation { target: goLight
-                        properties: "color"; duration: 1000 }
-                } ]
-        }
-        Rectangle {
-            width: 100;
-            height: 100;
-            color: "green"
-            RotationAnimation on rotation {
-                loops: Animation.Infinite
-                from: 0
-                to: 360
-            }
+        ManaPage {
+            id: manager
         }
     }
-
 }
