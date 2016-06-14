@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+<g>
+	<circle display="inline" fill="#BE8D2F" cx="25" cy="25" r="22"/>
+	<circle display="inline" fill="none" stroke="#AB7822" cx="25" cy="25" r="22"/>
+	<rect x="11.3" y="23.2" display="inline" fill="#582806" width="27.5" height="3.7"/>
+</g>
+</svg>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+<g>
+	<circle display="inline" fill="#BF4744" cx="25" cy="25" r="22"/>
+	<circle display="inline" fill="none" stroke="#AC312C" stroke-linejoin="round" cx="25" cy="25" r="22"/>
+	<path display="inline" opacity="0.65" fill="#5C090B" enable-background="new" d="M32.3,36v-3.7H36V36H32.3z,M32.3,14H36v3.7h-3.7V14z M14,32.3h3.7V36H14V32.3z M14,14h3.7v3.7H14V14z"/>
+	<polygon display="inline" fill="#4C0202" points="32.8,35.4 25,27.6 17.2,35.4 14.6,32.8 22.4,25 14.6,17.2 17.2,14.6,25,22.4 32.8,14.6 35.4,17.2 27.6,25 35.4,32.8"/>
+</g>
+</svg>
