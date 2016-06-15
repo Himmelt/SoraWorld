@@ -79,16 +79,21 @@ Item{
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
             anchors.topMargin: 5
+//            font.pixelSize: 18
+            font.family: "微软雅黑"
             currentIndex: stackPage.currentIndex
 
             TabButton {
-                text: qsTr("First")
+                text: qsTr("空")
             }
             TabButton {
-                text: qsTr("Second")
+                text: qsTr("之")
             }
             TabButton {
-                text: qsTr("Third")
+                text: qsTr("境")
+            }
+            TabButton {
+                text: qsTr("界")
             }
         }
 
@@ -96,32 +101,32 @@ Item{
             id: closex
             width: 4*height
             anchors.top: parent.top
-            anchors.topMargin: 5
+            anchors.topMargin: 8
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 5
+            anchors.bottomMargin: 8
             anchors.right: parent.right
-            anchors.rightMargin: 5
+            anchors.rightMargin: 8
 
             Xutton {
                 id: xxx
                 name: "xxx"
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
-                anchors.rightMargin: 0
+                anchors.rightMargin: 2
             }
             Xutton {
                 id: max
                 name: "max"
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: xxx.left
-                anchors.rightMargin: 5
+                anchors.rightMargin: 10
             }
             Xutton {
                 id: min
                 name: "min"
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: max.left
-                anchors.rightMargin: 5
+                anchors.rightMargin: 10
             }
         }
     }
@@ -149,6 +154,9 @@ Item{
 
         ManaPage {
             id: manager
+        }
+        AboutPage {
+            id: about
         }
     }
 }

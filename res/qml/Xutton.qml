@@ -8,8 +8,8 @@ import QtGraphicalEffects 1.0
 Button{
     property string name
     id: control
-    width: 30
-    height: 30
+    width: 24
+    height: 24
     hoverEnabled: true
     background: Image{
         anchors.fill: parent

@@ -26,11 +26,10 @@
         <file>img/avatar/liuka.png</file>
         <file>img/avatar/modelHimmelt.png</file>
         <file>qml/ManaPage.qml</file>
-        <file>qml/Test.qml</file>
         <file>qml/Xutton.qml</file>
         <file>qml/AvatarButton.qml</file>
         <file>qml/RoundImage.qml</file>
         <file>img/svg/offline.svg</file>
-        <file>qml/Avatar.qml</file>
+        <file>qml/AboutPage.qml</file>
     </qresource>
 </RCC>
