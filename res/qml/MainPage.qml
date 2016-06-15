@@ -5,28 +5,14 @@ import QtQuick.Layouts 1.3
 import QtGraphicalEffects 1.0
 
 Item{
-    Button {
-        id: control
-        anchors.centerIn: parent
-        text: qsTr("Button")
-
-        contentItem: Text {
-            text: control.text
-            font: control.font
-            opacity: enabled ? 1.0 : 0.3
-            color: control.down ? "#f25437" : "#21be2b"
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            elide: Text.ElideRight
-        }
-
-        background: Rectangle {
-            implicitWidth: 100
-            implicitHeight: 40
-            opacity: enabled ? 1 : 0.3
-            border.color: control.down ? "#ea2da1" : "#305bea"
-            border.width: 1
-            radius: 5
-        }
+    RoundImage{
+        x: 192
+        y: 123
+        width: 255
+        height: 100
+        radius: 10
+        source: "qrc:/img/avatar/avatar.png"
+        border_width: 1
+        border_color: "pink"
     }
 }

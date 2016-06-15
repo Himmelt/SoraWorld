@@ -28,5 +28,9 @@
         <file>qml/ManaPage.qml</file>
         <file>qml/Test.qml</file>
         <file>qml/Xutton.qml</file>
+        <file>qml/AvatarButton.qml</file>
+        <file>qml/RoundImage.qml</file>
+        <file>img/svg/offline.svg</file>
+        <file>qml/Avatar.qml</file>
     </qresource>
 </RCC>

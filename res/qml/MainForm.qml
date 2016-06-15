@@ -31,14 +31,13 @@ Item{
                 anchors.leftMargin: 0
                 anchors.top: parent.top
                 anchors.topMargin: 0
-
             }
         }
 
         Rectangle{
             id: mask
             anchors.fill: parent
-            radius: 10
+            radius: 8
             color: "black"
             visible: false
         }
@@ -49,7 +48,6 @@ Item{
             maskSource: mask
             cached: true
         }
-
     }
 
     Item{
@@ -89,6 +87,9 @@ Item{
             TabButton {
                 text: qsTr("Second")
             }
+            TabButton {
+                text: qsTr("Third")
+            }
         }
 
         Item{
@@ -110,17 +111,17 @@ Item{
             }
             Xutton {
                 id: max
+                name: "max"
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: xxx.left
                 anchors.rightMargin: 5
-                name: "max"
             }
             Xutton {
                 id: min
+                name: "min"
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: max.left
                 anchors.rightMargin: 5
-                name: "min"
             }
         }
     }

@@ -1,53 +1,32 @@
-import QtQuick 2.4
-import QtQuick.Controls 1.3
-import QtQuick.Layouts 1.1
+import QtQuick 2.7
+import QtQuick.Controls 2.0
 import QtQuick.Controls.Styles 1.4
+import QtQuick.Layouts 1.3
 import QtGraphicalEffects 1.0
+
 
 Item {
     id: avatarButton
     property bool isOnline: false
     property double side: Math.min(width,height)
     property url avatarImg
-    signal avatarclick
-    signal stateclick
+    signal avatarclick()
+    signal stateclick()
 
     Button {
         id: avatar
         width: side
         height: width
-        onClicked: avatarclick()
-        style: ButtonStyle {
-            background: Item {
-                Image{
-                    id: round
-                    source: avatarImg
-                    sourceSize: Qt.size(parent.width, parent.height)
-                    smooth: true
-                    visible: false
-                }
-                Rectangle{
-                    id:mask
-                    anchors.fill: parent
-                    radius: width/2
-                    smooth: true
-                    visible: false
-                }
 
-                OpacityMask {
-                    anchors.fill: round
-                    source: round
-                    maskSource: mask
-                }
-                Rectangle{
-                    anchors.fill: parent
-                    radius: width/2
-                    color:Qt.rgba(0, 0, 0, 0)
-                    border.width: 0.025*width
-                    border.color: "#fff"
-                }
-            }
+        background: RoundImage {
+            anchors.fill: parent
+            radius: width/2
+            source: avatarImg
+            border_width: 1
+            border_color: "white"
         }
+
+        onClicked: avatarclick()
     }
 
     Button {
@@ -55,14 +34,13 @@ Item {
         x: side*0.7071
         width: side*0.2929
         height: width
-        onClicked: stateclick()
-        style: ButtonStyle {
-            background: Image {
-                width: parent.width
-                height:parent.height
-                sourceSize: Qt.size(parent.width,parent.height)
-                source:"qrc:/img/svg/online.svg"
-            }
+
+        background:RoundImage {
+            anchors.fill: parent
+            radius: width/2
+            source: "qrc:/img/svg/" + (isOnline ? "online.svg" : "offline.svg")
         }
+
+        onClicked: stateclick()
     }
 }

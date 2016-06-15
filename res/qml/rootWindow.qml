@@ -6,7 +6,7 @@ import QtQuick.Layouts 1.1
 import QtGraphicalEffects 1.0
 
 ApplicationWindow {
-    id: rootWindow
+    id: root
     visible: true
     width: 800
     height: 500
@@ -26,9 +26,9 @@ ApplicationWindow {
             pos = Qt.point(mouseX, mouseY);
         }
         onPositionChanged: {
-            if (rootWindow.visibility !== 4 && pressedButtons === Qt.LeftButton) {
-                rootWindow.setX(rootWindow.x + mouseX - pos.x);
-                rootWindow.setY(rootWindow.y + mouseY - pos.y);
+            if (root.visibility !== 4 && pressedButtons === Qt.LeftButton) {
+                root.setX(root.x + mouseX - pos.x);
+                root.setY(root.y + mouseY - pos.y);
             }
         }
     }
