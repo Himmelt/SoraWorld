@@ -7,9 +7,12 @@ import QtGraphicalEffects 1.0
 
 Item {
     id: avatarButton
+
+    width: 50
+    height:50
     property bool isOnline: false
     property double side: Math.min(width,height)
-    property url avatarImg
+    property url avatarImg: "qrc:/img/avatar/avatar.png"
     signal avatarclick()
     signal stateclick()
 
@@ -22,7 +25,7 @@ Item {
             anchors.fill: parent
             radius: width/2
             source: avatarImg
-            border_width: 1
+            border_width: 1.5
             border_color: "white"
         }
 
@@ -43,4 +46,7 @@ Item {
 
         onClicked: stateclick()
     }
+
+    onAvatarclick: isOnline = !isOnline
+
 }

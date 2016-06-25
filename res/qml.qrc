@@ -31,5 +31,8 @@
         <file>qml/RoundImage.qml</file>
         <file>img/svg/offline.svg</file>
         <file>qml/AboutPage.qml</file>
+        <file>qml/TabAvatar.qml</file>
+        <file>qml/News.qml</file>
+        <file>qml/LoginBox.qml</file>
     </qresource>
 </RCC>

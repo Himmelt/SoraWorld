@@ -86,15 +86,14 @@ Item{
             TabButton {
                 text: qsTr("空")
             }
-            TabButton {
-                text: qsTr("之")
-            }
+
+            TabButton {text: qsTr("之")}
+
             TabButton {
                 text: qsTr("境")
             }
-            TabButton {
-                text: qsTr("界")
-            }
+
+            TabButton {text: qsTr("界")}
         }
 
         Item{

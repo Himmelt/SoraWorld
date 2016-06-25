@@ -1,26 +1,22 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
-import QtQuick.Controls.Styles 1.4
-import QtQuick.Layouts 1.3
 import QtGraphicalEffects 1.0
 
 
 Item {
     id: roundImg
     property url source
-    property double radius
-    property double border_width: 0.0
-    property color border_color: "#fff"
-
+    property double radius: width/2
+    property double border_width: 0
+    property color border_color: "white"
 
     Image{
         id: img
         anchors.fill: parent
-//        fillMode: Image.PreserveAspectCrop
         source: roundImg.source
         sourceSize: Qt.size(parent.width, parent.height)
         smooth: true
-        cache: false
+        cache: true
         visible: false
     }
 
@@ -28,6 +24,7 @@ Item {
         id: mask
         anchors.fill: parent
         radius: roundImg.radius
+        border.width: 0
         visible: false
     }
     
