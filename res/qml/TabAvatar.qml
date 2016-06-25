@@ -9,7 +9,8 @@ TabButton{
     property int index: 0
     property bool isOnline: false
     property url avatarImg: "qrc:/img/avatar/avatar.png"
-    signal stateclick(int index)
+
+    signal stateclick(var index)
 
     background: RoundImage{
         id: avatar
@@ -28,8 +29,7 @@ TabButton{
             background:RoundImage {
                 source: "qrc:/img/svg/" + (state.hovered ? (state.down ? "xxx_3.svg" : "xxx_2.svg") : (isOnline ? "online.svg" : "offline.svg"))
             }
-
-            onClicked: stateclick(root.index)
+            onClicked: root.destroy()
         }
     }
 }

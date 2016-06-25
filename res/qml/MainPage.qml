@@ -20,57 +20,17 @@ Item{
             }
         }
 
-
-        TabAvatar{
-            id: aaa
-            onStateclick: {
-                console.log("INDEX:",index)
-                tabBar.removeItem(index)
-                tabBar.updateIndex()
-            }
-        }
-        TabAvatar{
-            onStateclick: {
-                console.log("INDEX:",index)
-                tabBar.removeItem(index)
-                tabBar.updateIndex()
-            }
-        }
-        TabAvatar{
-            onStateclick: {
-                console.log("INDEX:",index)
-                tabBar.removeItem(index)
-                tabBar.updateIndex()
-            }
-        }
-        TabAvatar{
-            onStateclick: {
-                console.log("INDEX:",index)
-                tabBar.removeItem(index)
-                tabBar.updateIndex()
-            }
-            avatarImg: "/img/round.png"
-        }
-    }
-    Button {
-        anchors.centerIn: mainPage
-
-        onClicked: {
-            console.log("currentIndex:" , tabBar.currentIndex)
-
-            var queen = Qt.createComponent("TabAvatar.qml")
-
-            var item = queen.createObject()
-
-            console.log("Queen:" , queen,"|Item:",item)
-
-//            tabBar.removeItem(0)
-
-            console.log(tabBar.count)
-
+        function removeIndex(index){
+            tabBar.removeItem(index)
             tabBar.updateIndex()
-
         }
+
+        TabAvatar{
+        }
+        TabAvatar{
+        }
+
+        Component.onCompleted: updateIndex()
     }
 
     LoginBox {
