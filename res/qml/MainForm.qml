@@ -79,20 +79,18 @@ Item{
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
             anchors.topMargin: 5
-//            font.pixelSize: 18
+            //            font.pixelSize: 18
             font.family: "微软雅黑"
             currentIndex: stackPage.currentIndex
 
             TabButton {
                 text: qsTr("空")
             }
-
             TabButton {text: qsTr("之")}
 
             TabButton {
                 text: qsTr("境")
             }
-
             TabButton {text: qsTr("界")}
         }
 

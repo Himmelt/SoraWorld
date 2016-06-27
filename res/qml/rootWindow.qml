@@ -4,6 +4,9 @@ import QtQuick.Controls 2.0
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.1
 import QtGraphicalEffects 1.0
+import QtQuick.LocalStorage 2.0
+import "qrc:/js/config.js" as Config
+
 
 ApplicationWindow {
     id: root
@@ -37,6 +40,10 @@ ApplicationWindow {
         id: rootForm
         anchors.fill: parent
         anchors.margins: shadow_radius
+        Component.onCompleted: {
+            console.log("MainForm completed!")
+            Config.loadUsers()
+        }
     }
 
     DropShadow{
@@ -48,5 +55,11 @@ ApplicationWindow {
         verticalOffset : 2
         radius : 8.0
         samples : 16
+    }
+
+    Component.onCompleted: {
+        var db =LocalStorage.openDatabaseSync("SoraClient","1.0","SoraConfig", 10000);
+        Config.loadDB(db)
+        console.log("root completed!")
     }
 }

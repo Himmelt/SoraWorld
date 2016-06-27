@@ -34,5 +34,6 @@
         <file>qml/TabAvatar.qml</file>
         <file>qml/News.qml</file>
         <file>qml/LoginBox.qml</file>
+        <file>js/config.js</file>
     </qresource>
 </RCC>
