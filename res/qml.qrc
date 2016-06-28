@@ -31,8 +31,6 @@
         <file>qml/components/LoginBox.qml</file>
         <file>qml/components/News.qml</file>
         <file>qml/components/RoundImage.qml</file>
-        <file>qml/components/TabAvatar.qml</file>
-        <file>qml/components/TopBar.qml</file>
         <file>qml/components/Userlist.qml</file>
         <file>qml/components/Xutton.qml</file>
         <file>qml/pages/AboutPage.qml</file>

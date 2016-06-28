@@ -1,14 +1,13 @@
 import QtQuick 2.7
 import QtQuick.Controls 1.4
 import QtGraphicalEffects 1.0
-import QtQuick.LocalStorage 2.0
-import "qrc:/js/config.js" as Config
 
 ApplicationWindow {
     id: root
     width: 800
     height: 500
     color: "#00000000"
+    visible: true
     flags: Qt.FramelessWindowHint|Qt.Window
     title: qsTr("Sora World")
 
@@ -46,11 +45,5 @@ ApplicationWindow {
         verticalOffset : 2
         radius : root.radius
         samples : 16
-    }
-
-    Component.onCompleted: {
-        var db =LocalStorage.openDatabaseSync("SoraClient","1.0","SoraConfig", 10000);
-        Config.loadDB(db)
-        console.log("root completed!")
     }
 }

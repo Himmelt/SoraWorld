@@ -1,15 +1,13 @@
 import QtQuick 2.7
-import QtQuick.Controls 2.0
-import QtQuick.LocalStorage 2.0
 
-Item {
+Rectangle{
 
-    Rectangle{
-        x:200
-        y:300
-
-        width: 200
-        height: 150
-        color:"pink"
-    }
+    width: 400
+    color:"#66ffc2cd"
+    anchors.left: parent.left
+    anchors.leftMargin: 50
+    anchors.bottom: parent.bottom
+    anchors.bottomMargin: 50
+    anchors.top: parent.top
+    anchors.topMargin: 50
 }

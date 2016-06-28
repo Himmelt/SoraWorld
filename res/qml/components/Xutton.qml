@@ -1,18 +1,15 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
-import QtQuick.Controls.Styles 1.4
-import QtQuick.Layouts 1.3
-import QtGraphicalEffects 1.0
-
 
 Button{
-    property string name
     id: control
     width: 24
     height: 24
     hoverEnabled: true
+    property string name
+
     background: Image{
-        anchors.fill: parent
+        anchors.fill: control
         source: "qrc:/img/svg/" + name + "_" + (control.hovered ? (control.down ? "3" : "2") : "1") + ".svg"
     }
 }

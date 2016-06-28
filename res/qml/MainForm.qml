@@ -5,20 +5,19 @@ import QtGraphicalEffects 1.0
 import "pages"
 import "components"
 
-
 Item{
     id: root
-    property alias radius: mask.radius
+    property int radius: 8
 
     Item{
-        id: round
+        id: background
         anchors.fill: root
 
         property alias bgm: img.source
 
         Rectangle{
             id: bgm
-            anchors.fill: round
+            anchors.fill: background
             visible: false
 
             Image{
@@ -43,8 +42,9 @@ Item{
 
         Rectangle{
             id: mask
-            anchors.fill: round
+            anchors.fill: background
             color: "black"
+            radius: root.radius
             visible: false
         }
 
@@ -78,27 +78,27 @@ Item{
         }
 
         TabBar {
-            id: tabBar
+            id: menuBar
             width: 300
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 5
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
             anchors.topMargin: 5
-            font.family: "微软雅黑"
+            font.family: "Microsoft YaHei"
             currentIndex: stackPage.currentIndex
 
             TabButton {
-                text: qsTr("空")
+                text: qsTr("S")
             }
             TabButton {
-                text: qsTr("之")
+                text: qsTr("O")
             }
             TabButton {
-                text: qsTr("境")
+                text: qsTr("R")
             }
             TabButton {
-                text: qsTr("界")
+                text: qsTr("A")
             }
         }
 
@@ -147,7 +147,7 @@ Item{
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
 
-        currentIndex: tabBar.currentIndex
+        currentIndex: menuBar.currentIndex
 
         MainPage{
             id: mainPage
