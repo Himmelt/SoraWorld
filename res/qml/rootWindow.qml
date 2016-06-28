@@ -1,27 +1,22 @@
 import QtQuick 2.7
 import QtQuick.Controls 1.4
-import QtQuick.Controls 2.0
-import QtQuick.Controls.Styles 1.4
-import QtQuick.Layouts 1.1
 import QtGraphicalEffects 1.0
 import QtQuick.LocalStorage 2.0
 import "qrc:/js/config.js" as Config
 
-
 ApplicationWindow {
     id: root
-    visible: true
     width: 800
     height: 500
     color: "#00000000"
     flags: Qt.FramelessWindowHint|Qt.Window
     title: qsTr("Sora World")
 
-    property int shadow_radius: 8
+    property int radius: 8
 
     MouseArea{
         anchors.fill: parent
-        anchors.margins: shadow_radius
+        anchors.margins: root.radius
 
         property variant pos
 
@@ -39,11 +34,7 @@ ApplicationWindow {
     MainForm{
         id: rootForm
         anchors.fill: parent
-        anchors.margins: shadow_radius
-        Component.onCompleted: {
-            console.log("MainForm completed!")
-            Config.loadUsers()
-        }
+        anchors.margins: root.radius
     }
 
     DropShadow{
@@ -53,7 +44,7 @@ ApplicationWindow {
         color : "#80000000"
         horizontalOffset : 2
         verticalOffset : 2
-        radius : 8.0
+        radius : root.radius
         samples : 16
     }
 

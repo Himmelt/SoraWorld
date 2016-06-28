@@ -1,43 +1,49 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
-import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.3
 import QtGraphicalEffects 1.0
+import "pages"
+import "components"
 
 
 Item{
+    id: root
+    property alias radius: mask.radius
 
     Item{
-        id: background
-        anchors.fill: parent
+        id: round
+        anchors.fill: root
+
+        property alias bgm: img.source
 
         Rectangle{
-            id:bgm
-            anchors.fill: parent
+            id: bgm
+            anchors.fill: round
             visible: false
 
             Image{
-                anchors.fill: parent
-                source: "qrc:/img/bgm3.png"
+                id: img
+                anchors.fill: bgm
+                source: "qrc:/img/background.png"
                 smooth: true
                 cache: true
             }
+
             Rectangle{
                 height: 50
                 color: "#66fec1d5"
-                anchors.right: parent.right
+                anchors.right: bgm.right
                 anchors.rightMargin: 0
-                anchors.left: parent.left
+                anchors.left: bgm.left
                 anchors.leftMargin: 0
-                anchors.top: parent.top
+                anchors.top: bgm.top
                 anchors.topMargin: 0
             }
         }
 
         Rectangle{
             id: mask
-            anchors.fill: parent
-            radius: 8
+            anchors.fill: round
             color: "black"
             visible: false
         }
@@ -79,19 +85,21 @@ Item{
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
             anchors.topMargin: 5
-            //            font.pixelSize: 18
             font.family: "微软雅黑"
             currentIndex: stackPage.currentIndex
 
             TabButton {
                 text: qsTr("空")
             }
-            TabButton {text: qsTr("之")}
-
+            TabButton {
+                text: qsTr("之")
+            }
             TabButton {
                 text: qsTr("境")
             }
-            TabButton {text: qsTr("界")}
+            TabButton {
+                text: qsTr("界")
+            }
         }
 
         Item{
@@ -141,7 +149,7 @@ Item{
 
         currentIndex: tabBar.currentIndex
 
-        MainPage {
+        MainPage{
             id: mainPage
         }
 

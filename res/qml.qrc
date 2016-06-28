@@ -1,10 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/MainForm.qml</file>
-        <file>img/bgm3.png</file>
+        <file>img/background.png</file>
         <file>qml/rootWindow.qml</file>
-        <file>qml/MainPage.qml</file>
-        <file>qml/ConfigPage.qml</file>
         <file>img/bgm.png</file>
         <file>img/bgm2.png</file>
         <file>img/round.png</file>
@@ -25,15 +23,21 @@
         <file>img/avatar/Ikaros.png</file>
         <file>img/avatar/liuka.png</file>
         <file>img/avatar/modelHimmelt.png</file>
-        <file>qml/ManaPage.qml</file>
-        <file>qml/Xutton.qml</file>
-        <file>qml/AvatarButton.qml</file>
-        <file>qml/RoundImage.qml</file>
         <file>img/svg/offline.svg</file>
-        <file>qml/AboutPage.qml</file>
-        <file>qml/TabAvatar.qml</file>
-        <file>qml/News.qml</file>
-        <file>qml/LoginBox.qml</file>
         <file>js/config.js</file>
+        <file>img/image.png</file>
+        <file>img/avatar/default.png</file>
+        <file>qml/components/AvatarDelegate.qml</file>
+        <file>qml/components/LoginBox.qml</file>
+        <file>qml/components/News.qml</file>
+        <file>qml/components/RoundImage.qml</file>
+        <file>qml/components/TabAvatar.qml</file>
+        <file>qml/components/TopBar.qml</file>
+        <file>qml/components/Userlist.qml</file>
+        <file>qml/components/Xutton.qml</file>
+        <file>qml/pages/AboutPage.qml</file>
+        <file>qml/pages/ConfigPage.qml</file>
+        <file>qml/pages/MainPage.qml</file>
+        <file>qml/pages/ManaPage.qml</file>
     </qresource>
 </RCC>
