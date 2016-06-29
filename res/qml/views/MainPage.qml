@@ -1,8 +1,8 @@
 import QtQuick 2.7
-import "../components"
+import "components"
 
 Item{
-    id: mainPage
+    id: root
 
     Userlist {
         id: userlist
