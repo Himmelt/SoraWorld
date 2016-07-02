@@ -27,7 +27,7 @@ Item{
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: 5
-        
+        font.family: "微软雅黑"
         TabButton {
             text: qsTr("S")
         }

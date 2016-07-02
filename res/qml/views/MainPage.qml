@@ -17,8 +17,6 @@ Item{
         anchors.left: parent.left
         anchors.leftMargin: 20
 
-
-
     }
 
     News{

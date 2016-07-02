@@ -1,27 +1,36 @@
 .pragma library
 
-var model={};
-var db;
-function loadDB(vardb){
-    db = vardb;
-    db.transaction(
-        function(tx) {
-            tx.executeSql("CREATE TABLE IF NOT EXISTS `userlist` (`id` INTEGER NOT NULL,`username` TEXT NOT NULL DEFAULT '',PRIMARY KEY(id,username))");
-        }
-    )
+.import QtQuick.LocalStorage 2.0 as SQL
+
+/* Open Database */
+var db = SQL.LocalStorage.openDatabaseSync("SoraClient", "1.0", "SoraClient", 10000),
+    model;
+/* Initialize Tables */
+db.transaction(
+    function (tx) {
+        tx.executeSql("create table if not exists `userlist` \
+            (`id` integer not null,`username` text not null default '',primary key(id,username))");
+        tx.executeSql("create table if not exists `userinfo` \
+            (`id` integer not null,`username` text not null default '',primary key(id,username))");
+    }
+);
+/* Load Model */
+function loadModel(listmodel) {
+    model = listmodel;
+    console.log("model:", model, "list", listmodel);
 }
 
-function loadConfig(){
-    loadUsers();
+function test() {
+    model.append({
+        username: "Himmelt"
+    });
 }
-function loadUsers(){
+/* Save Model */
+function saveModel() {
     db.transaction(
-        function(tx) {
-            tx.executeSql("CREATE TABLE IF NOT EXISTS `userlist` (`id` INTEGER NOT NULL,`username` TEXT NOT NULL DEFAULT '',PRIMARY KEY(id,username))");
-//            var result = tx.executeSql('select * from notes');
-//            for(var i = 0; i < result.rows.length; i++) {
-//                print(result.rows[i].text);
-//            }
+        function (tx) {
+            tx.executeSql("create table if not exists `userlist` (`id` integer not null,`username` text not null default '',primary key(id,username))");
+            tx.executeSql("delete from `userinfo` where `username` not in `userlist`");
         }
     )
 }

@@ -1,6 +1,7 @@
 import QtQuick 2.7
 import QtQuick.Controls 1.4
 import QtGraphicalEffects 1.0
+import "qrc:/js/config.js" as Config
 
 ApplicationWindow {
     id: root
@@ -28,12 +29,17 @@ ApplicationWindow {
                 root.setY(root.y + mouseY - pos.y);
             }
         }
+
     }
 
     MainForm{
         id: rootForm
         anchors.fill: parent
         anchors.margins: root.radius
+
+        Component.onCompleted: {
+            console.log("mainForm")
+        }
     }
 
     DropShadow{
@@ -45,5 +51,8 @@ ApplicationWindow {
         verticalOffset : 2
         radius : root.radius
         samples : 16
+    }
+    Component.onCompleted: {
+        console.log(Config.db)
     }
 }
