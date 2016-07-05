@@ -11,13 +11,18 @@ Item {
 
     Image{
         id: img
-        source: "qrc:/img/image.png"
+        source : "qrc:/img/image.png"
         antialiasing: true
         anchors.fill: root
         sourceSize: Qt.size(root.width, root.height)
         smooth: true
         cache: true
         visible: false
+        onStatusChanged: {
+            if(status == Image.Error){
+                source = "qrc:/img/image.png"
+            }
+        }
     }
 
     Rectangle{

@@ -36,10 +36,6 @@ ApplicationWindow {
         id: rootForm
         anchors.fill: parent
         anchors.margins: root.radius
-
-        Component.onCompleted: {
-            console.log("mainForm")
-        }
     }
 
     DropShadow{
@@ -52,7 +48,8 @@ ApplicationWindow {
         radius : root.radius
         samples : 16
     }
+
     Component.onCompleted: {
-        console.log(Config.db)
+        Config.loadPath(rootPath)
     }
 }

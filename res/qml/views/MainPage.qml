@@ -2,6 +2,7 @@ import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtGraphicalEffects 1.0
 import "components"
+import "qrc:/js/config.js" as Config
 
 Item{
     id: root
@@ -16,7 +17,6 @@ Item{
         height:50
         anchors.left: parent.left
         anchors.leftMargin: 20
-
     }
 
     News{
@@ -29,6 +29,10 @@ Item{
         anchors.bottomMargin: 20
         anchors.leftMargin: 0
 
+        Button{
+            onClicked: Config.saveModel()
+            Component.onCompleted: text = Config.rootPath
+        }
     }
 
     LoginBox {
@@ -40,5 +44,3 @@ Item{
         anchors.bottomMargin: 20
     }
 }
-
-
