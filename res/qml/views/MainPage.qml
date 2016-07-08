@@ -10,13 +10,13 @@ Item{
     Userlist{
         id: userlist
         anchors.top: parent.top
-        anchors.topMargin: 10
+        anchors.topMargin: 20
 
         spacing: 20
         width: 5*50 + 4*spacing
         height:50
         anchors.left: parent.left
-        anchors.leftMargin: 20
+        anchors.leftMargin: 10
     }
 
     News{
@@ -26,7 +26,7 @@ Item{
         anchors.rightMargin: 10
         anchors.top: userlist.bottom
         anchors.topMargin: 10
-        anchors.bottomMargin: 20
+        anchors.bottomMargin: 10
         anchors.leftMargin: 0
 
         Button{
@@ -38,9 +38,12 @@ Item{
     LoginBox {
         id: loginBox
         width: 330
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
         anchors.top: parent.top
         anchors.topMargin: 20
-        anchors.rightMargin: 20
-        anchors.bottomMargin: 20
+        anchors.rightMargin: 10
+        anchors.bottomMargin: 10
+
     }
 }
