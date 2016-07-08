@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>qml/MainForm.qml</file>
         <file>img/background.png</file>
         <file>qml/rootWindow.qml</file>
         <file>img/bgm.png</file>
@@ -25,18 +24,7 @@
         <file>js/config.js</file>
         <file>img/image.png</file>
         <file>img/avatar/default.png</file>
-        <file>qml/views/AboutPage.qml</file>
-        <file>qml/views/Background.qml</file>
-        <file>qml/views/ConfigPage.qml</file>
-        <file>qml/views/MainPage.qml</file>
-        <file>qml/views/ManaPage.qml</file>
-        <file>qml/views/MenuBar.qml</file>
-        <file>qml/views/components/AvatarDelegate.qml</file>
-        <file>qml/views/components/LoginBox.qml</file>
-        <file>qml/views/components/News.qml</file>
-        <file>qml/views/components/OtherBack.qml</file>
-        <file>qml/views/components/RoundImage.qml</file>
-        <file>qml/views/components/Userlist.qml</file>
-        <file>qml/views/components/Xutton.qml</file>
+        <file>qml/AvatarDelegate.qml</file>
+        <file>qml/RoundImage.qml</file>
     </qresource>
 </RCC>
