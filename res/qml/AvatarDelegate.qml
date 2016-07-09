@@ -7,6 +7,7 @@ Button{
     height:50
 
     property alias source: avatar.source
+    property alias border: avatar.border
     property bool isOnline: false
     signal stateClicked
 

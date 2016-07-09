@@ -19,9 +19,11 @@ Item {
         cache: true
         visible: false
         onStatusChanged: {
-            if(status == Image.Error){
-                source = "qrc:/img/image.png"
-            }
+//            if(status == Image.Error){
+//                source = "qrc:/img/image.png"
+//            }
+////            status = Image.Ready
+//            console.log("status",status)
         }
     }
 

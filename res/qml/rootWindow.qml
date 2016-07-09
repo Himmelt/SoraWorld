@@ -4,6 +4,7 @@ import QtQuick.Controls 1.4
 import QtQuick.Controls 2.0
 import QtGraphicalEffects 1.0
 import QtQuick.LocalStorage 2.0
+import "widget"
 
 ApplicationWindow {
     id: rootApp
@@ -16,13 +17,20 @@ ApplicationWindow {
     property var db: LocalStorage.openDatabaseSync("SoraClient", "1.0", "SoraClient", 10000)
     Component.onCompleted: {
         db.transaction(function (tx) {
-            tx.executeSql("CREATE TABLE IF NOT EXISTS `userlist` (`username` TEXT,`password` TEXT)");
-            var rs = tx.executeSql("select * from userlist"),i = rs.rows.length;
-            while (i--) {
+            tx.executeSql("CREATE TABLE IF NOT EXISTS `userlist` (`username` TEXT,`password` TEXT,`gamemode` INTEGER DEFAULT 1,`keeppswd` INTEGER DEFAULT 1)");
+            var rs = tx.executeSql("select * from userlist"),length = rs.rows.length;
+            for(var i=0;i<length && i < 4;i++){
                 var item = rs.rows.item(i);
-                listmodel.append({username: item.username,password: item.password});
+                listmodel.append({username: item.username,password: item.password,gamemode: item.gamemode,keeppswd:item.keeppswd});
             }
         });
+
+        if(listmodel.count > 0){
+            var first = listmodel.get(0);
+            text_user.text = first.username;
+            text_pswd.text = first.password;
+            current.source = "file:///" + rootPath + "/avatar/" + first.username + ".png"
+        }
     }
 
     MouseArea{
@@ -208,7 +216,6 @@ ApplicationWindow {
                     antialiasing: true
                     orientation: ListView.Horizontal
                     snapMode: ListView.SnapOneItem
-                    highlightRangeMode: ListView.ApplyRange
                     anchors.top: parent.top
                     anchors.topMargin: 20
 
@@ -221,16 +228,20 @@ ApplicationWindow {
                     footer: Button{
                         width: userlist.count === 0 ? 50 : userlist.spacing + 50
                         height: 50
+                        enabled: (userlist.count < 4) ? true : false
                         RoundImage{
                             anchors.right: parent.right
                             width:50
                             height:50
                         }
                         onClicked: {
-                            listmodel.append({username:"avatar",password:"hhhh"})
+                            listmodel.append({username:"avatar",password:"hhhh",gamemode:1,keeppswd:0});
+                            userlist.currentIndex = listmodel.count - 1;
+                            text_user.text = "";
+                            text_pswd.text = "";
+                            current.source = "qrc:/img/avatar/default.png";
                         }
                     }
-
                     model: ListModel{
                         id: listmodel
                     }
@@ -240,11 +251,15 @@ ApplicationWindow {
                         height: 50
                         source: "file:///" + rootPath + "/avatar/" + username + ".png"
                         onStateClicked: listmodel.remove(index)
-
+                        border.color: ListView.isCurrentItem ? "red":"white"
                         onClicked: {
-                            listmodel.insert(index,{username:"Himmelt",password:"pssd"})
+                            userlist.currentIndex = index;
+                            text_user.text = username;
+                            text_pswd.text = password;
+                            current.source = source;
                         }
                     }
+                    Component.onCompleted: console.log("list",userlist.currentIndex)
                 }
 
 
@@ -266,9 +281,12 @@ ApplicationWindow {
                                 var i = listmodel.count;
                                 while (i--) {
                                     var item = listmodel.get(i);
-                                    tx.executeSql("insert into `userlist` values (?,?)", [item.username, item.password]);
+                                    tx.executeSql("insert into `userlist` values (?,?,?,?)", [item.username, item.password,item.gamemode,item.keeppswd]);
                                 }
                             })
+                            console.log(userlist.currentIndex)
+                            console.log(listmodel.get(userlist.currentIndex).username)
+                            console.log(userlist.currentItem.source)
                         }
                     }
                 }
@@ -282,95 +300,54 @@ ApplicationWindow {
                     anchors.topMargin: 20
                     anchors.rightMargin: 10
                     anchors.bottomMargin: 10
-                    color: "#807d08b7"
+                    color: "#107d08b7"
                     radius: 10
 
                     RoundImage{
                         id: current
                         width: 80
                         height: 80
+                        border.width: 2
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
-
-                    TextField{
+                    ITextField {
                         id: text_user
-                        height: 40
-                        text: "Test"
-                        horizontalAlignment: Text.AlignHCenter
                         anchors.top: current.bottom
                         anchors.topMargin: 20
-                        color: "#028dfd"
-                        placeholderText: "hold on"
-                        anchors.right: parent.right
-                        anchors.rightMargin: 20
                         anchors.left: parent.left
                         anchors.leftMargin: 20
+                        anchors.right: parent.right
+                        anchors.rightMargin: 20
+                        placeholderText: qsTr("请输入ID...")
                     }
-                    TextField{
+                    ITextField {
                         id: text_pswd
-                        color: "green"
-                        text: ""
-                        font.family: "Courier"
-                        horizontalAlignment: Text.AlignHCenter
-                        placeholderText: "place hold"
-                        height: 40
                         anchors.top: text_user.bottom
                         anchors.topMargin: 20
-                        anchors.right: parent.right
-                        anchors.rightMargin: 20
                         anchors.left: parent.left
                         anchors.leftMargin: 20
-                        background: Rectangle {
-                            implicitWidth: 200
-                            implicitHeight: 40
-                            color: text_pswd.enabled ? "transparent" : "#353637"
-                            border.color: text_pswd.enabled ? "#21be2b" : "transparent"
-                        }
+                        anchors.right: parent.right
+                        anchors.rightMargin: 20
+                        placeholderText: qsTr("请输入密码...")
+                        enabled: keepOnline.checked
                     }
-                    CheckBox {
-                        id: keepUser
+                    ICheckBox {
+                        id: keepOnline
                         anchors.top: text_pswd.bottom
                         anchors.topMargin: 20
                         anchors.left: parent.left
                         anchors.leftMargin: 20
+                        text: qsTr("登录空境")
                         checked: true
-                        text: qsTr("记住账号")
-
                     }
-                    CheckBox {
+                    ICheckBox{
                         id: keepPswd
                         anchors.top: text_pswd.bottom
                         anchors.topMargin: 20
                         anchors.right: parent.right
                         anchors.rightMargin: 20
                         text: qsTr("记住密码")
-                        indicator: Rectangle {
-                            implicitWidth: 26
-                            implicitHeight: 26
-                            x: keepPswd.leftPadding
-                            y: parent.height / 2 - height / 2
-                            radius: 3
-                            border.color: keepPswd.down ? "#17a81a" : "#21be2b"
-
-                            Rectangle {
-                                width: 14
-                                height: 14
-                                x: 6
-                                y: 6
-                                radius: 2
-                                color: keepPswd.down ? "#17a81a" : "#21be2b"
-                                visible: keepPswd.checked
-                            }
-                        }
-                        contentItem: Text {
-                            text: keepPswd.text
-                            font: keepPswd.font
-                            opacity: enabled ? 1.0 : 0.3
-                            color: keepPswd.down ? "#17a81a" : "#21be2b"
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignVCenter
-                            leftPadding: keepPswd.indicator.width + keepPswd.spacing
-                        }
+                        enabled: keepOnline.checked
                     }
 
                     Button{
@@ -381,6 +358,12 @@ ApplicationWindow {
                         anchors.rightMargin: 20
                         anchors.bottom: parent.bottom
                         text: qsTr("登录账号")
+                        onClicked: {
+                            var i = userlist.currentIndex
+                            if(i >= 0){
+                                listmodel.get(i).username = text_user.text
+                            }
+                        }
                     }
                 }
 

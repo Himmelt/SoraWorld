@@ -21,10 +21,11 @@
         <file>img/avatar/liuka.png</file>
         <file>img/avatar/modelHimmelt.png</file>
         <file>img/svg/offline.svg</file>
-        <file>js/config.js</file>
         <file>img/image.png</file>
         <file>img/avatar/default.png</file>
         <file>qml/AvatarDelegate.qml</file>
         <file>qml/RoundImage.qml</file>
+        <file>qml/widget/ICheckBox.qml</file>
+        <file>qml/widget/ITextField.qml</file>
     </qresource>
 </RCC>
